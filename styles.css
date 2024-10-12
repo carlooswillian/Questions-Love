@@ -6,6 +6,7 @@ body {
     background: black;
     color: white;
     overflow: hidden; /* Evita barras de rolagem */
+    height: 100vh; /* Define a altura do body para 100% da altura da viewport */
 }
 
 /* Estilos para o contêiner do jogo */
@@ -22,6 +23,13 @@ body {
     color: white;
 }
 
+/* Imagem de fundo */
+body {
+    background-size: cover; /* Garante que a imagem cubra toda a tela */
+    background-position: top center; /* Inicia a imagem no topo */
+}
+
+/* Estilo para a imagem final */
 #final-image {
     width: 100vw;
     height: 100vh;
@@ -49,15 +57,4 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-}
-
-/* Estilos para imagem de fundo */
-body {
-    background-size: cover;
-    background-position: center;
-}
-
-/* Estilo para esconder elementos */
-.hidden {
-    display: none;
 }
