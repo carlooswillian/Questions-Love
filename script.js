@@ -4,16 +4,55 @@ let wrongCount = 0;
 
 const questions = [
     {
-        question: "Qual é a nossa cor favorita?",
-        answers: ["Azul", "Verde"],
+        question: "Qual é a data do nosso primeiro beijo?",
+        answers: ["29/09/2022", "26/09/2022"],
         correctAnswer: 0
     },
     {
-        question: "Qual foi nossa primeira viagem?",
-        answers: ["Praia", "Montanha"],
+        question: "Qual meu fast food favorito?",
+        answers: ["Hambúrguer", "Pizza"],
         correctAnswer: 1
+    },
+    {
+        question: "Qual minha cor favorita?",
+        answers: ["Verde", "Azul"],
+        correctAnswer: 1
+    },
+    {
+        question: "Qual meu esporte favorito?",
+        answers: ["Futebol", "Musculação"],
+        correctAnswer: 0
+    },
+    {
+        question: "Pra onde foi nossa primeira viagem?",
+        answers: ["Búzios", "Rio de Janeiro"],
+        correctAnswer: 0
+    },
+    {
+        question: "Quantas cidades já conhecemos juntos?",
+        answers: ["10", "8"],
+        correctAnswer: 0
+    },
+    {
+        question: "Onde eu gosto de carinho?",
+        answers: ["Cabelo", "Orelha"],
+        correctAnswer: 0
+    },
+    {
+        question: "Qual raiz quadrada de 16?",
+        answers: ["4", "8"],
+        correctAnswer: 0
+    },
+    {
+        question: "O que eu acho mais bonito em você?",
+        answers: ["Olhos", "Sorriso"],
+        correctAnswer: 1
+    },
+    {
+        question: "Qual destino quero ir?",
+        answers: ["Itália", "Japão"],
+        correctAnswer: 0
     }
-    // Adicione mais perguntas aqui
 ];
 
 function loadQuestion() {
