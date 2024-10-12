@@ -41,6 +41,11 @@ button.answer:hover {
     background-color: #0056b3;
 }
 
+button.answer.selected {
+    background-color: #0056b3; /* Cor diferente para o botão selecionado */
+    border: 2px solid #fff; /* Borda branca para destacar */
+}
+
 /* Rodapé fixo para contador de acertos e erros */
 #footer {
     position: fixed;
