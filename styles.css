@@ -14,6 +14,7 @@ body {
     position: relative;
     z-index: 10; /* Para que fique acima da imagem de fundo */
     text-align: center;
+    height: 100vh; /* Para ocupar a altura total da tela */
 }
 
 /* Estilos para a página de resultados */
@@ -31,6 +32,7 @@ body {
 
 /* Estilo para a imagem final */
 #final-image {
+    background-image: url('imagem11.jpg'); /* Ajuste para a imagem do prêmio */
     width: 100vw; /* Largura da imagem ocupa 100% da viewport */
     height: 100vh; /* Altura da imagem ocupa 100% da viewport */
     background-position: top center; /* Garante que a imagem comece no topo */
