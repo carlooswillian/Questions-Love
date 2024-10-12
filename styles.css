@@ -56,29 +56,39 @@ button.answer:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* Resultados */
+/* Estilo do container de resultado */
 #result-container {
     padding: 30px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     max-width: 90%;
     margin: auto;
     margin-top: 10vh;
-    display: none; /* Oculta o container de resultado inicialmente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* Estilo para a tela final */
-.fullscreen {
-    position: fixed;
-    top: 0;
-    left: 0;
+/* Botão do resultado */
+#result-button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    max-width: 300px;
+}
+
+#result-button:hover {
+    background-color: #218838;
+}
+
+/* Destaque para a resposta selecionada */
+button.answer.selected {
+    background-color: #0056b3; /* Cor diferente para o botão selecionado */
+    border: 2px solid #fff; /* Borda branca para destacar */
 }
 
 /* Estilos para telas menores, como celulares */
@@ -97,16 +107,11 @@ button.answer:hover {
         font-size: 14px;
     }
 
-    #result-title {
-        font-size: 24px;
+    #result-container {
+        padding: 20px;
     }
 
-    #result-message {
-        font-size: 16px;
-    }
-
-    button#result-button {
-        font-size: 16px;
-        padding: 10px 20px;
+    #result-button {
+        font-size: 14px;
     }
 }
