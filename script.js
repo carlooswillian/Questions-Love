@@ -71,8 +71,10 @@ function loadQuestion() {
     buttons[1].textContent = questionData.answers[1];
 }
 
-function checkAnswer(isCorrect) {
-    if (isCorrect) {
+function checkAnswer(selectedAnswerIndex) {
+    const correctAnswerIndex = questions[currentQuestion].correctAnswer;
+
+    if (selectedAnswerIndex === correctAnswerIndex) {
         correctCount++;
         document.getElementById('correct-count').textContent = correctCount;
     } else {
