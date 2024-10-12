@@ -117,5 +117,8 @@ function updateFooter() {
     document.getElementById('footer').textContent = `Acertos: ${correctAnswers} | Erros: ${wrongAnswers}`;
 }
 
+// Inicializa o rodapé com acertos e erros antes de carregar a primeira pergunta
+updateFooter();
+
 // Carrega a primeira pergunta ao iniciar
 loadQuestion();
