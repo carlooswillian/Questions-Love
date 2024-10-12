@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>Jogo de Perguntas</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="game-container">
         <div id="question-container">
             <h1 id="question"></h1>
-            <div id="options"></div>
-            <button id="next-button" class="hidden">Próxima Pergunta</button>
+            <button id="answer1" class="answer-button"></button>
+            <button id="answer2" class="answer-button"></button>
         </div>
+    </div>
+    
+    <div id="footer">
+        Acertos: <span id="correct-count">0</span> | Erros: <span id="wrong-count">0</span>
     </div>
 
     <div id="result-container" class="hidden">
         <h1 id="result-message"></h1>
-        <button id="result-button">Pegue o seu prêmio 🎁</button>
+        <button id="result-button"></button>
     </div>
 
-    <div id="final-image" class="hidden"></div>
-
-    <div id="footer">
-        Acertos: <span id="correct-count">0</span> | Erros: <span id="wrong-count">0</span>
-    </div>
+    <div id="final-image" class="hidden"></div> <!-- Div para a imagem final -->
 
     <script src="script.js"></script>
 </body>
