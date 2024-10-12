@@ -69,7 +69,7 @@ const questions = [
 // Função para carregar a pergunta
 function loadQuestion() {
     if (currentQuestion >= questions.length) {
-        document.getElementById('question-container').innerHTML = '<p>Fim do jogo!</p>';
+        showResult(); // Mostra o resultado quando as perguntas acabam
         return;
     }
 
@@ -117,8 +117,10 @@ function updateFooter() {
     document.getElementById('footer').textContent = `Acertos: ${correctAnswers} | Erros: ${wrongAnswers}`;
 }
 
-// Inicializa o rodapé com acertos e erros antes de carregar a primeira pergunta
-updateFooter();
+// Função para mostrar o resultado final
+function showResult() {
+    document.getElementById('game-container').style.display = 'none'; // Oculta o jogo
+    const resultContainer = document.getElementById('result-container');
+    resultContainer.style.display = 'block'; // Mostra o container de resultado
 
-// Carrega a primeira pergunta ao iniciar
-loadQuestion();
+    // Verifica se o número de acertos é suficiente
