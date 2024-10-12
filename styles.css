@@ -1,65 +1,61 @@
-/* Estilos globais */
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+}
+
+body {
     font-family: 'Arial', sans-serif;
-    color: white;
-    background-color: #282c34; /* Cor de fundo do body */
+    color: #fff;
+    background-color: #282c34;
+    background-size: cover;
+    transition: background 0.5s;
+}
+
+#game-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     height: 100vh;
-}
-
-/* Estilos para o container do jogo */
-#game-container {
     text-align: center;
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    position: relative;
 }
 
-/* Estilos para as perguntas */
-#question-title {
+h1 {
     font-size: 2rem;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
 }
 
 #question {
     font-size: 1.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
-/* Estilos para os botões de resposta */
 .answer {
-    background-color: #4CAF50; /* Cor do botão */
+    background-color: rgba(255, 255, 255, 0.2);
     color: white;
     border: none;
-    padding: 15px 30px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1.2rem;
-    margin: 10px 0;
-    cursor: pointer;
+    padding: 15px 25px;
+    margin: 10px;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
-    width: 100%; /* Botões ocupam toda a largura */
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    font-size: 1.2rem;
 }
 
 .answer:hover {
-    background-color: #45a049; /* Cor do botão ao passar o mouse */
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
 }
 
-.selected {
-    background-color: #d4d4d4; /* Cor do botão selecionado */
+.answer.selected {
+    background-color: rgba(0, 255, 0, 0.6);
 }
 
-/* Estilos para o rodapé fixo */
 #footer {
     position: fixed;
-    bottom: 20px;
+    bottom: 10px;
     left: 0;
     right: 0;
     text-align: center;
@@ -71,11 +67,35 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* Estilos para a página de resultados */
 #result-container {
     text-align: center;
-    margin-top: 20px;
-    display: none; /* Escondido inicialmente */
+    margin-top: 20vh;
+}
+
+#result-message {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#prize-button, #retry-button {
+    background-color: #61dafb;
+    color: #282c34;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background 0.3s, transform 0.2s;
+}
+
+#prize-button:hover, #retry-button:hover {
+    background-color: #21a1f1;
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
 }
 
 #final-image {
@@ -84,29 +104,8 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-}
-
-/* Estilos para ocultar elementos */
-.hidden {
-    display: none;
-}
-
-/* Adicionando responsividade */
-@media (max-width: 768px) {
-    #question-title {
-        font-size: 1.5rem;
-    }
-
-    #question {
-        font-size: 1.2rem;
-    }
-
-    .answer {
-        font-size: 1rem;
-        padding: 10px 20px;
-    }
-
-    #footer {
-        font-size: 14px;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
