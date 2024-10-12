@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Perguntas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1 id="question-title">Pergunta 1</h1>
+        <div id="question-container">
+            <p id="question">Qual é a nossa cor favorita?</p>
+            <button class="answer" onclick="checkAnswer(true)">Azul</button>
+            <button class="answer" onclick="checkAnswer(false)">Verde</button>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p>Acertos: <span id="correct-count">0</span></p>
+        <p>Erros: <span id="wrong-count">0</span></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
