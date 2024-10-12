@@ -69,7 +69,7 @@ const questions = [
 // Função para carregar a pergunta
 function loadQuestion() {
     if (currentQuestion >= questions.length) {
-        showResult(); // Mostra o resultado ao invés de carregar mais perguntas
+        showResult();
         return;
     }
 
@@ -108,7 +108,6 @@ function selectAnswer(selectedAnswer) {
     }
 
     updateFooter();
-    
     currentQuestion++;
     setTimeout(loadQuestion, 1000); // Delay para mostrar a seleção antes de carregar a próxima pergunta
 }
@@ -120,58 +119,45 @@ function updateFooter() {
 
 // Função para mostrar o resultado final
 function showResult() {
-    // Remove todos os elementos do corpo para mostrar o resultado
-    document.body.innerHTML = '';
+    // Esconde o container de perguntas
+    document.getElementById('game-container').classList.add('hidden');
 
-    const resultContainer = document.createElement('div');
-    resultContainer.id = 'result-container';
+    // Mostra o container de resultados
+    document.getElementById('result-container').classList.remove('hidden');
+
+    const resultMessage = document.getElementById('result-message');
+    const prizeButton = document.getElementById('prize-button');
+    const retryButton = document.getElementById('retry-button');
+    const finalImage = document.getElementById('final-image');
 
     if (correctAnswers >= 7) {
-        resultContainer.innerHTML = `
-            <h2>Parabéns, você venceu!</h2>
-            <button id="prize-button">Pegue o seu prêmio 🎁</button>
-        `;
-        document.body.appendChild(resultContainer);
-        document.getElementById('prize-button').onclick = showPrize;
+        resultMessage.textContent = "Parabéns, você venceu!";
+        prizeButton.classList.remove('hidden');
+        finalImage.style.backgroundImage = "url(imagem11.jpg)"; // Substitua pelo nome real do arquivo
+        finalImage.classList.remove('hidden');
+
+        prizeButton.onclick = () => {
+            finalImage.classList.remove('hidden');
+            finalImage.style.backgroundImage = "url(imagem11.jpg)"; // Substitua pelo nome real do arquivo
+        };
     } else {
-        resultContainer.innerHTML = `
-            <h2>Tente novamente</h2>
-            <button id="retry-button">Voltar para a primeira pergunta</button>
-        `;
-        document.body.appendChild(resultContainer);
-        document.getElementById('retry-button').onclick = restartGame;
+        resultMessage.textContent = "Tente novamente!";
+        retryButton.classList.remove('hidden');
+
+        retryButton.onclick = () => {
+            currentQuestion = 0;
+            correctAnswers = 0;
+            wrongAnswers = 0;
+            updateFooter();
+            document.getElementById('result-container').classList.add('hidden');
+            document.getElementById('game-container').classList.remove('hidden');
+            loadQuestion();
+        };
     }
 }
 
-// Função para mostrar a imagem de prêmio
-function showPrize() {
-    // Remove todos os elementos do corpo para mostrar a imagem do prêmio
-    document.body.innerHTML = `
-        <div id="prize-container">
-            <img src="imagem11.jpg" alt="Seu prêmio!" style="width: 100%; height: auto;">
-        </div>
-    `;
-}
+// Inicializa o rodapé com acertos e erros antes de carregar a primeira pergunta
+updateFooter();
 
-// Função para reiniciar o jogo
-function restartGame() {
-    currentQuestion = 0;
-    correctAnswers = 0;
-    wrongAnswers = 0;
-
-    // Limpa o conteúdo do corpo e reinicia o jogo
-    document.body.innerHTML = `
-        <div id="game-container">
-            <h1 id="question-title"></h1>
-            <p id="question"></p>
-            <button id="answer1" class="answer"></button>
-            <button id="answer2" class="answer"></button>
-        </div>
-        <div id="footer"></div>
-    `;
-    
-    loadQuestion();
-}
-
-// Inicia o jogo
+// Carrega a primeira pergunta ao iniciar
 loadQuestion();
