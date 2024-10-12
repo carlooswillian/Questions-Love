@@ -41,6 +41,15 @@ button.answer:hover {
     background-color: #0056b3;
 }
 
+/* Resultados */
+#result-container {
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none; /* Esconde elementos com essa classe */
+}
+
 /* Rodapé fixo para contador de acertos e erros */
 #footer {
     position: fixed;
@@ -54,35 +63,6 @@ button.answer:hover {
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-}
-
-/* Estilo do container de resultado */
-#result-container {
-    padding: 30px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    max-width: 90%;
-    margin: auto;
-    margin-top: 10vh;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-
-/* Botão do resultado */
-#result-button {
-    padding: 10px 20px;
-    margin: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    width: 100%;
-    max-width: 300px;
-}
-
-#result-button:hover {
-    background-color: #218838;
 }
 
 /* Destaque para a resposta selecionada */
@@ -104,14 +84,6 @@ button.answer.selected {
     }
 
     #footer {
-        font-size: 14px;
-    }
-
-    #result-container {
-        padding: 20px;
-    }
-
-    #result-button {
         font-size: 14px;
     }
 }
