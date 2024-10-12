@@ -69,7 +69,7 @@ const questions = [
 // Função para carregar a pergunta
 function loadQuestion() {
     if (currentQuestion >= questions.length) {
-        showResult();
+        showResult(); // Mostra o resultado ao invés de carregar mais perguntas
         return;
     }
 
@@ -112,30 +112,68 @@ function selectAnswer(selectedAnswer) {
     setTimeout(loadQuestion, 1000); // Delay para mostrar a seleção antes de carregar a próxima pergunta
 }
 
+// Função para atualizar o contador de acertos e erros
+function updateFooter() {
+    document.getElementById('footer').textContent = `Acertos: ${correctAnswers} | Erros: ${wrongAnswers}`;
+}
+
 // Função para mostrar o resultado final
 function showResult() {
-    document.getElementById('game-container').innerHTML = ''; // Limpa o conteúdo do jogo
-    const resultContainer = document.getElementById('result-container');
-    resultContainer.classList.remove('hidden'); // Mostra o container de resultado
+    const resultContainer = document.createElement('div');
+    resultContainer.id = 'result-container';
 
-    // Verifica o número de acertos
     if (correctAnswers >= 7) {
-        document.getElementById('result-message').textContent = 'Parabéns, você venceu!';
-        document.getElementById('result-button').textContent = 'Pegue o seu prêmio 🎁';
-        document.getElementById('result-button').onclick = showPrize;
+        resultContainer.innerHTML = `
+            <h2>Parabéns, você venceu!</h2>
+            <button id="prize-button">Pegue o seu prêmio 🎁</button>
+        `;
+        document.body.appendChild(resultContainer);
+        document.getElementById('prize-button').onclick = showPrize;
     } else {
-        document.getElementById('result-message').textContent = 'Tente novamente!';
-        document.getElementById('result-button').textContent = 'Voltar para a primeira pergunta';
-        document.getElementById('result-button').onclick = resetGame;
+        resultContainer.innerHTML = `
+            <h2>Tente novamente</h2>
+            <button id="retry-button">Voltar para a primeira pergunta</button>
+        `;
+        document.body.appendChild(resultContainer);
+        document.getElementById('retry-button').onclick = restartGame;
     }
 }
 
-// Função para mostrar o prêmio em full screen
+// Função para mostrar a imagem de prêmio
 function showPrize() {
-    document.getElementById('game-container').innerHTML = '<img src="imagem11.jpg" alt="Prêmio" style="width: 100%; height: 100vh; object-fit: cover;">';
+    document.body.innerHTML = `
+        <div id="prize-container">
+            <img src="imagem11.jpg" alt="Seu prêmio!" style="width: 100%; height: auto;">
+        </div>
+    `;
 }
 
 // Função para reiniciar o jogo
-function resetGame() {
+function restartGame() {
     currentQuestion = 0;
-    correct
+    correctAnswers = 0;
+    wrongAnswers = 0;
+
+    // Limpa o conteúdo do corpo e reinicia o jogo
+    document.body.innerHTML = `
+        <div id="game-container">
+            <h1 id="question-title"></h1>
+            <p id="question"></p>
+            <button id="answer1" class="answer"></button>
+            <button id="answer2" class="answer"></button>
+        </div>
+        <div id="footer"></div>
+    `;
+
+    // Inicializa o rodapé com acertos e erros antes de carregar a primeira pergunta
+    updateFooter();
+    
+    // Carrega a primeira pergunta ao iniciar
+    loadQuestion();
+}
+
+// Inicializa o rodapé com acertos e erros antes de carregar a primeira pergunta
+updateFooter();
+
+// Carrega a primeira pergunta ao iniciar
+loadQuestion();
