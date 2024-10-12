@@ -63,17 +63,19 @@ function loadQuestion() {
     }
 
     const questionData = questions[currentQuestion];
+    
+    // Atualiza o título e a pergunta
     document.getElementById('question-title').textContent = `Pergunta ${currentQuestion + 1}`;
     document.getElementById('question').textContent = questionData.question;
 
+    // Atualiza as opções de resposta com base na pergunta atual
     const answer1Button = document.getElementById('answer1');
     const answer2Button = document.getElementById('answer2');
 
-    // Atualiza o texto dos botões
     answer1Button.textContent = questionData.answers[0];
     answer2Button.textContent = questionData.answers[1];
 
-    // Define os eventos de clique para os botões de resposta
+    // Atribui os eventos de clique para as alternativas
     answer1Button.onclick = () => checkAnswer(0);
     answer2Button.onclick = () => checkAnswer(1);
 }
