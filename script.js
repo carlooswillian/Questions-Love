@@ -1,160 +1,135 @@
+let currentQuestion = 0;
+let correctAnswers = 0;
+let wrongAnswers = 0;
+
 const questions = [
     {
         question: "Qual é a data do nosso primeiro beijo?",
-        answers: [
-            { text: "29/09/2022", correct: true },
-            { text: "26/09/2022", correct: false }
-        ]
+        options: ["29/09/2022", "26/09/2022"],
+        correctAnswer: 0
     },
     {
         question: "Qual meu fast food favorito?",
-        answers: [
-            { text: "Hambúrguer", correct: false },
-            { text: "Pizza", correct: true }
-        ]
+        options: ["Hambúrguer", "Pizza"],
+        correctAnswer: 1
     },
     {
         question: "Qual minha cor favorita?",
-        answers: [
-            { text: "Verde", correct: false },
-            { text: "Azul", correct: true }
-        ]
+        options: ["Verde", "Azul"],
+        correctAnswer: 1
     },
     {
         question: "Qual meu esporte favorito?",
-        answers: [
-            { text: "Futebol", correct: true },
-            { text: "Musculação", correct: false }
-        ]
+        options: ["Futebol", "Musculação"],
+        correctAnswer: 0
     },
     {
         question: "Pra onde foi nossa primeira viagem?",
-        answers: [
-            { text: "Búzios", correct: true },
-            { text: "Rio de Janeiro", correct: false }
-        ]
+        options: ["Búzios", "Rio de Janeiro"],
+        correctAnswer: 0
     },
     {
         question: "Quantas cidades já conhecemos juntos?",
-        answers: [
-            { text: "10", correct: true },
-            { text: "8", correct: false }
-        ]
+        options: ["10", "8"],
+        correctAnswer: 0
     },
     {
         question: "Onde eu gosto de carinho?",
-        answers: [
-            { text: "Cabelo", correct: true },
-            { text: "Orelha", correct: false }
-        ]
+        options: ["Cabelo", "Orelha"],
+        correctAnswer: 0
     },
     {
         question: "Qual raiz quadrada de 16?",
-        answers: [
-            { text: "4", correct: true },
-            { text: "8", correct: false }
-        ]
+        options: ["4", "8"],
+        correctAnswer: 0
     },
     {
         question: "O que eu acho mais bonito em você?",
-        answers: [
-            { text: "Olhos", correct: false },
-            { text: "Sorriso", correct: true }
-        ]
+        options: ["Olhos", "Sorriso"],
+        correctAnswer: 1
     },
     {
         question: "Qual destino quero ir?",
-        answers: [
-            { text: "Itália", correct: true },
-            { text: "Japão", correct: false }
-        ]
+        options: ["Itália", "Japão"],
+        correctAnswer: 0
     }
 ];
 
-let currentQuestionIndex = 0;
-let correctCount = 0;
-let wrongCount = 0;
+const questionElement = document.getElementById("question");
+const buttons = Array.from(document.getElementsByClassName("answer-button"));
+const footerElement = document.getElementById("footer");
+const resultContainer = document.getElementById("result-container");
+const resultMessage = document.getElementById("result-message");
+const resultButton = document.getElementById("result-button");
+const finalModal = document.getElementById("final-modal");
 
-const questionElement = document.getElementById('question');
-const answerButtons = document.querySelectorAll('.answer-button');
-const correctCountElement = document.getElementById('correct-count');
-const wrongCountElement = document.getElementById('wrong-count');
-const resultContainer = document.getElementById('result-container');
-const resultMessage = document.getElementById('result-message');
-const resultButton = document.getElementById('result-button');
-
-// Modal
-const modal = document.getElementById('final-modal');
-const closeModal = document.getElementById('close-modal');
-
-closeModal.onclick = function() {
-    modal.style.display = "none"; // Fecha o modal ao clicar no botão de fechar
-};
-
-// Inicia o jogo
-function startGame() {
-    currentQuestionIndex = 0;
-    correctCount = 0;
-    wrongCount = 0;
-    resultContainer.classList.add('hidden');
-    questionElement.classList.remove('hidden');
-    answerButtons.forEach(button => button.classList.remove('hidden'));
-    correctCountElement.innerText = correctCount;
-    wrongCountElement.innerText = wrongCount;
-    showQuestion(questions[currentQuestionIndex]);
-    document.body.style.backgroundImage = `url('imagem${currentQuestionIndex + 1}.jpg')`; 
-}
-
-// Exibe a pergunta atual
-function showQuestion(question) {
-    questionElement.innerText = question.question;
-    answerButtons.forEach((button, index) => {
-        button.innerText = question.answers[index].text;
-        button.classList.remove('selected'); // Remove a seleção das respostas
-        button.onclick = () => selectAnswer(question.answers[index]);
+function loadQuestion() {
+    const current = questions[currentQuestion];
+    questionElement.textContent = current.question;
+    buttons.forEach((button, index) => {
+        button.textContent = current.options[index];
+        button.onclick = () => handleAnswer(index);
     });
+
+    // Atualizar imagem de fundo
+    document.body.style.backgroundImage = `url('imagem${currentQuestion + 1}.jpg')`;
 }
 
-// Seleciona a resposta
-function selectAnswer(answer) {
-    if (answer.correct) {
-        correctCount++;
+function handleAnswer(selectedIndex) {
+    const current = questions[currentQuestion];
+    if (selectedIndex === current.correctAnswer) {
+        correctAnswers++;
     } else {
-        wrongCount++;
+        wrongAnswers++;
     }
-    correctCountElement.innerText = correctCount;
-    wrongCountElement.innerText = wrongCount;
-
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
-        showQuestion(questions[currentQuestionIndex]);
-        document.body.style.backgroundImage = `url('imagem${currentQuestionIndex + 1}.jpg')`;
+    updateFooter();
+    currentQuestion++;
+    
+    if (currentQuestion < questions.length) {
+        loadQuestion();
     } else {
         showResult();
     }
 }
 
-// Exibe o resultado
-function showResult() {
-    questionElement.classList.add('hidden');
-    answerButtons.forEach(button => button.classList.add('hidden'));
-    resultContainer.classList.remove('hidden');
+function updateFooter() {
+    footerElement.textContent = `Acertos: ${correctAnswers} | Erros: ${wrongAnswers}`;
+}
 
-    if (correctCount >= 7) {
-        resultMessage.innerText = "Parabéns, você venceu!";
-        resultButton.innerText = "Pegue o seu prêmio 🎁";
-        resultButton.onclick = showFinalImage;
+function showResult() {
+    resultContainer.classList.remove("hidden");
+    if (correctAnswers >= 7) {
+        resultMessage.textContent = "Parabéns, você venceu!";
+        resultButton.textContent = "Pegue o seu prêmio 🎁";
+        resultButton.onclick = showFinalModal;
     } else {
-        resultMessage.innerText = "Tente novamente!";
-        resultButton.innerText = "Recomeçar";
-        resultButton.onclick = startGame;
+        resultMessage.textContent = "Tente novamente!";
+        resultButton.textContent = "Voltar ao início";
+        resultButton.onclick = resetGame;
     }
 }
 
-// Exibe o pop-up da imagem final
-function showFinalImage() {
-    modal.style.display = "block"; // Mostra o modal
+function showFinalModal() {
+    finalModal.style.display = "flex";
+    document.getElementById("modal-content").innerHTML = `
+        <img src="imagem11.jpg" alt="Prêmio">
+        <button id="close-modal" onclick="closeModal()">Fechar</button>
+    `;
 }
 
-// Inicia o jogo ao carregar a página
-startGame();
+function closeModal() {
+    finalModal.style.display = "none";
+}
+
+function resetGame() {
+    currentQuestion = 0;
+    correctAnswers = 0;
+    wrongAnswers = 0;
+    resultContainer.classList.add("hidden");
+    loadQuestion();
+    updateFooter();
+}
+
+// Carregar a primeira pergunta
+loadQuestion();
+updateFooter();
