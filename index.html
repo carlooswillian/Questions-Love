@@ -8,18 +8,23 @@
 </head>
 <body>
     <div id="game-container">
-        <h1 id="question-title"></h1>
-        <p id="question"></p>
-        <button id="answer1" class="answer"></button>
-        <button id="answer2" class="answer"></button>
+        <h1>Jogo de Perguntas</h1>
+        <div id="question"></div>
+        <div id="answers"></div>
+        <div id="footer">
+            Acertos: <span id="correct-count">0</span> | Erros: <span id="wrong-count">0</span>
+        </div>
     </div>
-    <div id="footer"></div>
-    <div id="result-container" class="hidden">
-        <h1 id="result-message"></h1>
+
+    <div id="result-page" class="hidden">
+        <div id="result-message"></div>
         <button id="prize-button" class="hidden">Pegue o seu prêmio 🎁</button>
         <button id="retry-button" class="hidden">Tente novamente</button>
-        <div id="final-image" class="hidden"></div>
+        <div id="final-image" class="hidden">
+            <img src="imagem11.jpg" alt="Premiação" style="width: 100%; height: auto;">
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
