@@ -82,20 +82,24 @@ function loadQuestion() {
     document.getElementById('answer2').textContent = questionData.answers[1];
 
     // Limpa a seleção anterior
-    document.getElementById('answer1').classList.remove('selected');
-    document.getElementById('answer2').classList.remove('selected');
+    document.querySelectorAll('.answer').forEach(button => {
+        button.classList.remove('selected'); // Remove a classe 'selected' de todos os botões
+    });
 
     // Atribui os eventos de clique para as alternativas
-    document.getElementById('answer1').onclick = () => checkAnswer(0);
-    document.getElementById('answer2').onclick = () => checkAnswer(1);
+    document.getElementById('answer1').onclick = () => selectAnswer(0);
+    document.getElementById('answer2').onclick = () => selectAnswer(1);
 
     // Define a imagem de fundo
     document.body.style.backgroundImage = `url(${questionData.image})`;
 }
 
-// Função para verificar a resposta
-function checkAnswer(selectedAnswer) {
+// Função para selecionar uma resposta
+function selectAnswer(selectedAnswer) {
     const questionData = questions[currentQuestion];
+    
+    // Marca o botão selecionado
+    document.getElementById(`answer${selectedAnswer + 1}`).classList.add('selected');
 
     if (selectedAnswer === questionData.correctAnswer) {
         correctAnswers++;
@@ -103,9 +107,9 @@ function checkAnswer(selectedAnswer) {
         wrongAnswers++;
     }
 
-    currentQuestion++;
     updateFooter();
-    loadQuestion();
+    currentQuestion++;
+    setTimeout(loadQuestion, 1000); // Delay para mostrar a seleção antes de carregar a próxima pergunta
 }
 
 // Função para atualizar o contador de acertos e erros
