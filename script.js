@@ -67,33 +67,26 @@ const questions = [
 
 function loadQuestion() {
     if (currentQuestion >= questions.length) {
-        // Exibe uma mensagem de fim de jogo
         document.getElementById('question-container').innerHTML = '<p>Fim do jogo!</p>';
         return;
     }
 
     const questionData = questions[currentQuestion];
 
-    // Atualiza o título e a pergunta
+    // Atualiza a pergunta e respostas
     document.getElementById('question-title').textContent = `Pergunta ${currentQuestion + 1}`;
     document.getElementById('question').textContent = questionData.question;
-
-    // Atualiza as opções de resposta com base na pergunta atual
-    const answer1Button = document.getElementById('answer1');
-    const answer2Button = document.getElementById('answer2');
-
-    answer1Button.textContent = questionData.answers[0];
-    answer2Button.textContent = questionData.answers[1];
+    document.getElementById('answer1').textContent = questionData.answers[0];
+    document.getElementById('answer2').textContent = questionData.answers[1];
 
     // Atribui os eventos de clique para as alternativas
-    answer1Button.onclick = () => checkAnswer(0);
-    answer2Button.onclick = () => checkAnswer(1);
+    document.getElementById('answer1').onclick = () => checkAnswer(0);
+    document.getElementById('answer2').onclick = () => checkAnswer(1);
 
     // Define a imagem de fundo
     document.body.style.backgroundImage = `url(${questionData.image})`;
-    document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundPosition = 'center';
 }
+
 
 function checkAnswer(selectedAnswerIndex) {
     const correctAnswerIndex = questions[currentQuestion].correctAnswer;
