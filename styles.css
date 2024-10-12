@@ -1,92 +1,8 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    color: #ffffff;
-    background-color: #282c34; /* Cor de fundo */
-    overflow: hidden; /* Impede a barra de rolagem */
-}
-
-#game-container {
-    text-align: center;
-    padding: 20px;
-}
-
-h1 {
-    font-size: 2.5rem; /* Tamanho do título */
-    margin-bottom: 20px;
-}
-
-p {
-    font-size: 1.5rem; /* Tamanho do texto da pergunta */
-    margin-bottom: 20px;
-    line-height: 1.5; /* Espaçamento entre linhas */
-}
-
-.answer {
-    background-color: #61dafb; /* Cor do botão */
-    color: #282c34; /* Cor do texto do botão */
-    border: none;
-    border-radius: 8px;
-    padding: 15px 30px; /* Espaçamento interno */
-    font-size: 1.2rem; /* Tamanho do texto do botão */
-    cursor: pointer; /* Muda o cursor ao passar por cima */
-    margin: 10px; /* Margem entre os botões */
-    transition: background-color 0.3s, transform 0.2s; /* Transições */
-}
-
-.answer:hover {
-    background-color: #21a1f1; /* Cor ao passar o mouse */
-    transform: scale(1.05); /* Aumenta ligeiramente ao passar o mouse */
-}
-
-#footer {
-    position: fixed;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    font-size: 18px;
-    padding: 15px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-}
-
+/* Estilos para a página de resultados */
 #result-container {
     text-align: center;
     margin-top: 20vh;
-}
-
-#result-message {
-    font-size: 2rem; /* Tamanho da mensagem de resultado */
-    margin-bottom: 20px;
-}
-
-#prize-button, #retry-button {
-    background-color: #28a745; /* Cor do botão de prêmio e tentar novamente */
     color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 15px 30px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    margin: 10px; /* Margem entre os botões */
-}
-
-#prize-button:hover, #retry-button:hover {
-    background-color: #218838; /* Cor ao passar o mouse */
-    transform: scale(1.05);
-}
-
-.hidden {
-    display: none; /* Esconde elementos com esta classe */
 }
 
 #final-image {
@@ -98,4 +14,24 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Classe para esconder elementos */
+.hidden {
+    display: none;
+}
+
+/* Rodapé fixo para contador de acertos e erros */
+#footer {
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 }
