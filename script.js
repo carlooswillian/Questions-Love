@@ -69,7 +69,7 @@ const questions = [
 // Função para carregar a pergunta
 function loadQuestion() {
     if (currentQuestion >= questions.length) {
-        showResult(); // Mostra a tela de resultado
+        showResult();
         return;
     }
 
@@ -112,11 +112,30 @@ function selectAnswer(selectedAnswer) {
     setTimeout(loadQuestion, 1000); // Delay para mostrar a seleção antes de carregar a próxima pergunta
 }
 
-// Função para mostrar o resultado
+// Função para mostrar o resultado final
 function showResult() {
-    document.getElementById('game-container').style.display = 'none'; // Esconde o container do jogo
-    document.getElementById('result-container').style.display = 'block'; // Mostra o container de resultado
+    document.getElementById('game-container').innerHTML = ''; // Limpa o conteúdo do jogo
+    const resultContainer = document.getElementById('result-container');
+    resultContainer.classList.remove('hidden'); // Mostra o container de resultado
 
-    const resultTitle = document.getElementById('result-title');
-    const resultMessage = document.getElementById('result-message');
-    const
+    // Verifica o número de acertos
+    if (correctAnswers >= 7) {
+        document.getElementById('result-message').textContent = 'Parabéns, você venceu!';
+        document.getElementById('result-button').textContent = 'Pegue o seu prêmio 🎁';
+        document.getElementById('result-button').onclick = showPrize;
+    } else {
+        document.getElementById('result-message').textContent = 'Tente novamente!';
+        document.getElementById('result-button').textContent = 'Voltar para a primeira pergunta';
+        document.getElementById('result-button').onclick = resetGame;
+    }
+}
+
+// Função para mostrar o prêmio em full screen
+function showPrize() {
+    document.getElementById('game-container').innerHTML = '<img src="imagem11.jpg" alt="Prêmio" style="width: 100%; height: 100vh; object-fit: cover;">';
+}
+
+// Função para reiniciar o jogo
+function resetGame() {
+    currentQuestion = 0;
+    correct
