@@ -82,7 +82,14 @@ const wrongCountElement = document.getElementById('wrong-count');
 const resultContainer = document.getElementById('result-container');
 const resultMessage = document.getElementById('result-message');
 const resultButton = document.getElementById('result-button');
-const finalImage = document.getElementById('final-image');
+
+// Modal
+const modal = document.getElementById('final-modal');
+const closeModal = document.getElementById('close-modal');
+
+closeModal.onclick = function() {
+    modal.style.display = "none"; // Fecha o modal ao clicar no botão de fechar
+};
 
 // Inicia o jogo
 function startGame() {
@@ -90,8 +97,12 @@ function startGame() {
     correctCount = 0;
     wrongCount = 0;
     resultContainer.classList.add('hidden');
+    questionElement.classList.remove('hidden');
+    answerButtons.forEach(button => button.classList.remove('hidden'));
+    correctCountElement.innerText = correctCount;
+    wrongCountElement.innerText = wrongCount;
     showQuestion(questions[currentQuestionIndex]);
-    document.body.style.backgroundImage = `url('imagem${currentQuestionIndex + 1}.jpg')`; // Define a imagem de fundo para a primeira pergunta
+    document.body.style.backgroundImage = `url('imagem${currentQuestionIndex + 1}.jpg')`; 
 }
 
 // Exibe a pergunta atual
@@ -99,6 +110,7 @@ function showQuestion(question) {
     questionElement.innerText = question.question;
     answerButtons.forEach((button, index) => {
         button.innerText = question.answers[index].text;
+        button.classList.remove('selected'); // Remove a seleção das respostas
         button.onclick = () => selectAnswer(question.answers[index]);
     });
 }
@@ -116,7 +128,7 @@ function selectAnswer(answer) {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         showQuestion(questions[currentQuestionIndex]);
-        document.body.style.backgroundImage = `url('imagem${currentQuestionIndex + 1}.jpg')`; // Atualiza a imagem de fundo
+        document.body.style.backgroundImage = `url('imagem${currentQuestionIndex + 1}.jpg')`;
     } else {
         showResult();
     }
@@ -139,12 +151,9 @@ function showResult() {
     }
 }
 
-// Mostra a imagem final
+// Exibe o pop-up da imagem final
 function showFinalImage() {
-    finalImage.style.display = 'block'; // Exibe a imagem
-    finalImage.style.backgroundImage = "url('imagem11.jpg')"; // Define a imagem de fundo
-    finalImage.classList.remove('hidden'); // Remove a classe hidden
-    resultButton.style.zIndex = '-1'; // Envia o botão para trás da imagem
+    modal.style.display = "block"; // Mostra o modal
 }
 
 // Inicia o jogo ao carregar a página
