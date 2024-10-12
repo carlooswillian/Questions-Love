@@ -1,118 +1,94 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
 }
 
 body {
-    background-color: #f0f0f0;
-    color: #333;
-    font-size: 18px;
-    transition: background 0.5s ease;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    background-color: #282c34; /* Cor de fundo */
+    overflow: hidden; /* Impede a barra de rolagem */
 }
 
-/* Estilos para o contêiner do jogo */
 #game-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
     text-align: center;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos para o título da pergunta */
-#question-title {
-    font-size: 24px;
-    font-weight: bold;
+h1 {
+    font-size: 2.5rem; /* Tamanho do título */
     margin-bottom: 20px;
-    color: #4a90e2;
 }
 
-/* Estilos para a pergunta */
-#question {
-    margin-bottom: 30px;
-    font-size: 20px;
-    color: #555;
+p {
+    font-size: 1.5rem; /* Tamanho do texto da pergunta */
+    margin-bottom: 20px;
+    line-height: 1.5; /* Espaçamento entre linhas */
 }
 
-/* Estilos para os botões de resposta */
 .answer {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    font-size: 18px;
-    color: white;
-    background-color: #4a90e2;
+    background-color: #61dafb; /* Cor do botão */
+    color: #282c34; /* Cor do texto do botão */
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 8px;
+    padding: 15px 30px; /* Espaçamento interno */
+    font-size: 1.2rem; /* Tamanho do texto do botão */
+    cursor: pointer; /* Muda o cursor ao passar por cima */
+    margin: 10px; /* Margem entre os botões */
+    transition: background-color 0.3s, transform 0.2s; /* Transições */
 }
 
 .answer:hover {
-    background-color: #357ab8;
-    transform: translateY(-2px);
+    background-color: #21a1f1; /* Cor ao passar o mouse */
+    transform: scale(1.05); /* Aumenta ligeiramente ao passar o mouse */
 }
 
-.answer.selected {
-    background-color: #3a76a1;
-}
-
-/* Estilos para o rodapé */
 #footer {
     position: fixed;
     bottom: 10px;
     left: 0;
     right: 0;
     text-align: center;
-    color: #fff;
-    font-size: 16px;
+    color: white;
+    font-size: 18px;
     padding: 15px;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* Estilos para a página de resultados */
 #result-container {
     text-align: center;
     margin-top: 20vh;
-    color: #4a90e2;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilo para o botão do prêmio e tentar novamente */
+#result-message {
+    font-size: 2rem; /* Tamanho da mensagem de resultado */
+    margin-bottom: 20px;
+}
+
 #prize-button, #retry-button {
-    display: block;
-    width: 200px;
-    margin: 20px auto;
-    padding: 15px;
-    font-size: 18px;
+    background-color: #28a745; /* Cor do botão de prêmio e tentar novamente */
     color: white;
-    background-color: #4caf50;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    padding: 15px 30px;
+    font-size: 1.5rem;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 10px; /* Margem entre os botões */
 }
 
 #prize-button:hover, #retry-button:hover {
-    background-color: #45a049;
-    transform: translateY(-2px);
+    background-color: #218838; /* Cor ao passar o mouse */
+    transform: scale(1.05);
 }
 
-/* Estilos para a imagem final */
+.hidden {
+    display: none; /* Esconde elementos com esta classe */
+}
+
 #final-image {
     width: 100%;
     height: 100vh;
@@ -122,9 +98,4 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-/* Classe para esconder elementos */
-.hidden {
-    display: none;
 }
