@@ -109,3 +109,14 @@ h1 {
     justify-content: center;
     position: relative;
 }
+
+/* Estilo para a página de Parabéns/Tente Novamente */
+#result-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: rgba(40, 44, 52, 0.9); /* Fundo escuro para destacar */
+}
