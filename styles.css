@@ -32,8 +32,10 @@ h1 {
 
 .answer-button {
     display: inline-block;
+    width: 250px; /* Largura padrão para os botões */
+    max-width: 80%; /* Para telas menores, os botões ocupam 80% da largura */
     margin: 10px;
-    padding: 15px 30px;
+    padding: 15px;
     font-size: 18px;
     background-color: #008cba;
     color: white;
@@ -42,6 +44,7 @@ h1 {
     cursor: pointer;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s, transform 0.3s;
+    text-align: center;
 }
 
 .answer-button:hover {
@@ -108,7 +111,9 @@ h1 {
 
 /* Result Button */
 #result-button {
-    padding: 15px 30px;
+    width: 250px; /* Largura padrão para o botão */
+    max-width: 80%; /* Para telas menores */
+    padding: 15px;
     font-size: 18px;
     background-color: #28a745;
     color: white;
@@ -131,6 +136,8 @@ h1 {
 
 /* General button for modal */
 #close-modal {
+    width: 250px; /* Largura padrão para o botão */
+    max-width: 80%; /* Para telas menores */
     padding: 10px 20px;
     font-size: 16px;
     background-color: #dc3545;
