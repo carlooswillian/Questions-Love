@@ -5,50 +5,24 @@ body {
     font-family: Arial, sans-serif;
     background: black;
     color: white;
-    overflow: hidden; /* Evita barras de rolagem */
-    height: 100vh; /* Define a altura do body para 100% da altura da viewport */
+    overflow: hidden;
+    height: 100vh;
 }
 
 /* Estilos para o contêiner do jogo */
 #game-container {
     position: relative;
-    z-index: 10; /* Para que fique acima da imagem de fundo */
+    z-index: 10;
     text-align: center;
 }
 
-/* Estilos para a página de resultados */
 #result-container {
     text-align: center;
     margin-top: 20vh;
     color: white;
 }
 
-/* Imagem de fundo */
-body {
-    background-size: cover; /* Garante que a imagem cubra toda a tela */
-    background-position: top center; /* Inicia a imagem no topo */
-}
-
-/* Estilo para a imagem final */
-#final-image {
-    width: 100vw; /* Largura da imagem ocupa 100% da viewport */
-    height: 100vh; /* Altura da imagem ocupa 100% da viewport */
-    background-position: top center; /* Garante que a imagem comece no topo */
-    background-size: cover; /* Garante que a imagem cubra toda a tela */
-    background-repeat: no-repeat; /* Evita que a imagem se repita */
-    display: none; /* Esconde inicialmente */
-    position: fixed; /* Fixa a imagem na tela */
-    top: 0; /* Começa no topo da tela */
-    left: 0; /* Começa no lado esquerdo da tela */
-    z-index: -1; /* Coloca a imagem atrás de outros elementos */
-}
-
-/* Classe para esconder elementos */
-.hidden {
-    display: none;
-}
-
-/* Rodapé fixo para contador de acertos e erros */
+/* Estilo para o rodapé fixo */
 #footer {
     position: fixed;
     bottom: 10px;
@@ -61,4 +35,49 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Estilo para o modal */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed; /* Fica em cima de todo o conteúdo */
+    z-index: 999; /* Coloca acima dos outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ocupa toda a tela */
+    height: 100%; /* Ocupa toda a tela */
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo escurecido */
+}
+
+/* Conteúdo do modal */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza o conteúdo */
+    width: 56.25vh; /* Mantém a proporção 9:16 */
+    height: 100vh; 
+    max-width: 90vw;
+    max-height: 90vh;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+/* Imagem dentro do modal */
+#final-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra a área da modal */
+}
+
+/* Botão de fechar o modal */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: black;
+    font-size: 30px;
+    cursor: pointer;
 }
