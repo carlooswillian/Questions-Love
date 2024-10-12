@@ -1,3 +1,4 @@
+/* Estilo global */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,16 +6,24 @@ body {
     color: white;
     text-align: center;
     background-color: #000;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
 }
 
+/* Container do jogo com fundo semi-transparente para destacar o texto */
 #game-container {
-    padding: 50px;
+    padding: 30px;
     background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente para melhorar a legibilidade */
     border-radius: 10px;
-    display: inline-block;
-    margin-top: 50px;
+    max-width: 90%;
+    margin: auto;
+    margin-top: 10vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
+/* Botões de resposta */
 button.answer {
     padding: 10px 20px;
     margin: 10px;
@@ -23,12 +32,16 @@ button.answer {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
 }
 
 button.answer:hover {
     background-color: #0056b3;
 }
 
+/* Rodapé fixo para contador de acertos e erros */
 #footer {
     position: fixed;
     bottom: 10px;
@@ -36,4 +49,22 @@ button.answer:hover {
     right: 0;
     text-align: center;
     color: white;
+    font-size: 16px;
+}
+
+/* Estilos para telas menores, como celulares */
+@media (max-width: 600px) {
+    #game-container {
+        padding: 20px;
+        margin-top: 5vh;
+    }
+
+    button.answer {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    #footer {
+        font-size: 14px;
+    }
 }
