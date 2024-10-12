@@ -1,70 +1,72 @@
 let currentQuestion = 0;
-let correctCount = 0;
-let wrongCount = 0;
+let correctAnswers = 0;
+let wrongAnswers = 0;
 
+// Array de perguntas
 const questions = [
     {
         question: "Qual é a data do nosso primeiro beijo?",
         answers: ["29/09/2022", "26/09/2022"],
         correctAnswer: 0,
-        image: "imagem1.jpg"
+        image: "imagem1.jpg" // Substitua pelo nome real do arquivo
     },
     {
         question: "Qual meu fast food favorito?",
         answers: ["Hambúrguer", "Pizza"],
         correctAnswer: 1,
-        image: "imagem2.jpg"
+        image: "imagem2.jpg" // Substitua pelo nome real do arquivo
     },
     {
         question: "Qual minha cor favorita?",
         answers: ["Verde", "Azul"],
         correctAnswer: 1,
-        image: "imagem3.jpg"
+        image: "imagem3.jpg" // Substitua pelo nome real do arquivo
     },
     {
         question: "Qual meu esporte favorito?",
         answers: ["Futebol", "Musculação"],
         correctAnswer: 0,
-        image: "imagem4.jpg"
+        image: "imagem4.jpg" // Substitua pelo nome real do arquivo
     },
     {
         question: "Pra onde foi nossa primeira viagem?",
         answers: ["Búzios", "Rio de Janeiro"],
         correctAnswer: 0,
-        image: "imagem5.jpg"
+        image: "imagem5.jpg" // Substitua pelo nome real do arquivo
     },
     {
         question: "Quantas cidades já conhecemos juntos?",
         answers: ["10", "8"],
         correctAnswer: 0,
-        image: "imagem6.jpg"
+        image: "imagem6.jpg" // Substitua pelo nome real do arquivo
     },
     {
         question: "Onde eu gosto de carinho?",
         answers: ["Cabelo", "Orelha"],
         correctAnswer: 0,
-        image: "imagem7.jpg"
+        image: "imagem7.jpg" // Substitua pelo nome real do arquivo
     },
     {
         question: "Qual raiz quadrada de 16?",
         answers: ["4", "8"],
         correctAnswer: 0,
-        image: "imagem8.jpg"
+        image: "imagem8.jpg" // Substitua pelo nome real do arquivo
     },
     {
         question: "O que eu acho mais bonito em você?",
         answers: ["Olhos", "Sorriso"],
         correctAnswer: 1,
-        image: "imagem9.jpg"
+        image: "imagem9.jpg" // Substitua pelo nome real do arquivo
     },
     {
         question: "Qual destino quero ir?",
         answers: ["Itália", "Japão"],
         correctAnswer: 0,
-        image: "imagem10.jpg"
+        image: "imagem10.jpg" // Substitua pelo nome real do arquivo
     }
 ];
 
+// Função para carregar a pergunta
 function loadQuestion() {
     if (currentQuestion >= questions.length) {
         document.getElementById('question-container').innerHTML = '<p>Fim do jogo!</p>';
@@ -79,6 +81,10 @@ function loadQuestion() {
     document.getElementById('answer1').textContent = questionData.answers[0];
     document.getElementById('answer2').textContent = questionData.answers[1];
 
+    // Limpa a seleção anterior
+    document.getElementById('answer1').classList.remove('selected');
+    document.getElementById('answer2').classList.remove('selected');
+
     // Atribui os eventos de clique para as alternativas
     document.getElementById('answer1').onclick = () => checkAnswer(0);
     document.getElementById('answer2').onclick = () => checkAnswer(1);
@@ -87,21 +93,25 @@ function loadQuestion() {
     document.body.style.backgroundImage = `url(${questionData.image})`;
 }
 
+// Função para verificar a resposta
+function checkAnswer(selectedAnswer) {
+    const questionData = questions[currentQuestion];
 
-function checkAnswer(selectedAnswerIndex) {
-    const correctAnswerIndex = questions[currentQuestion].correctAnswer;
-
-    if (selectedAnswerIndex === correctAnswerIndex) {
-        correctCount++;
-        document.getElementById('correct-count').textContent = correctCount;
+    if (selectedAnswer === questionData.correctAnswer) {
+        correctAnswers++;
     } else {
-        wrongCount++;
-        document.getElementById('wrong-count').textContent = wrongCount;
+        wrongAnswers++;
     }
 
-    // Carrega a próxima pergunta
     currentQuestion++;
+    updateFooter();
     loadQuestion();
 }
 
-window.onload = loadQuestion;
+// Função para atualizar o contador de acertos e erros
+function updateFooter() {
+    document.getElementById('footer').textContent = `Acertos: ${correctAnswers} | Erros: ${wrongAnswers}`;
+}
+
+// Carrega a primeira pergunta ao iniciar
+loadQuestion();
