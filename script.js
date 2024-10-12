@@ -91,6 +91,7 @@ function startGame() {
     wrongCount = 0;
     resultContainer.classList.add('hidden');
     showQuestion(questions[currentQuestionIndex]);
+    document.body.style.backgroundImage = `url('imagem${currentQuestionIndex + 1}.jpg')`; // Define a imagem de fundo para a primeira pergunta
 }
 
 // Exibe a pergunta atual
@@ -115,6 +116,7 @@ function selectAnswer(answer) {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         showQuestion(questions[currentQuestionIndex]);
+        document.body.style.backgroundImage = `url('imagem${currentQuestionIndex + 1}.jpg')`; // Atualiza a imagem de fundo
     } else {
         showResult();
     }
