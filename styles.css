@@ -31,12 +31,16 @@ body {
 
 /* Estilo para a imagem final */
 #final-image {
-    width: 100vw;
-    height: 100vh;
-    background-position: center;
+    width: 100vw; /* Largura da imagem ocupa 100% da viewport */
+    height: 100vh; /* Altura da imagem ocupa 100% da viewport */
+    background-position: top center; /* Garante que a imagem comece no topo */
     background-size: cover; /* Garante que a imagem cubra toda a tela */
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
     display: none; /* Esconde inicialmente */
+    position: fixed; /* Fixa a imagem na tela */
+    top: 0; /* Começa no topo da tela */
+    left: 0; /* Começa no lado esquerdo da tela */
+    z-index: -1; /* Coloca a imagem atrás de outros elementos */
 }
 
 /* Classe para esconder elementos */
