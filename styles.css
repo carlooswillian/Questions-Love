@@ -1,83 +1,136 @@
-/* Estilos gerais */
-body {
+* {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background: black;
-    color: white;
-    overflow: hidden;
-    height: 100vh;
+    box-sizing: border-box;
 }
 
-/* Estilos para o contêiner do jogo */
-#game-container {
-    position: relative;
-    z-index: 10;
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+}
+
+#question {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5); /* Fundo semitransparente para contraste */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.answer-button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
     text-align: center;
 }
 
+.answer-button:hover {
+    background-color: #ddd;
+}
+
+#footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.5); /* Fundo semitransparente para o rodapé */
+    padding: 10px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Estilos para o container de resultados */
 #result-container {
     text-align: center;
-    margin-top: 20vh;
-    color: white;
 }
 
-/* Estilo para o rodapé fixo */
-#footer {
+#result-message {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#result-button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Modal para a imagem de prêmio */
+#final-modal {
+    display: none;
     position: fixed;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    font-size: 16px;
-    padding: 15px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-}
-
-/* Estilo para o modal */
-.modal {
-    display: none; /* Escondido por padrão */
-    position: fixed; /* Fica em cima de todo o conteúdo */
-    z-index: 999; /* Coloca acima dos outros elementos */
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Ocupa toda a tela */
-    height: 100%; /* Ocupa toda a tela */
-    background-color: rgba(0, 0, 0, 0.8); /* Fundo escurecido */
-}
-
-/* Conteúdo do modal */
-.modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centraliza o conteúdo */
-    width: 56.25vh; /* Mantém a proporção 9:16 */
-    height: 100vh; 
-    max-width: 90vw;
-    max-height: 90vh;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-    text-align: center;
-}
-
-/* Imagem dentro do modal */
-#final-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Garante que a imagem cubra a área da modal */
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Botão de fechar o modal */
-.close {
+#modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}
+
+#modal-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+#close-modal {
     position: absolute;
     top: 10px;
-    right: 20px;
-    color: black;
-    font-size: 30px;
+    right: 10px;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
+    color: #333;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #question {
+        font-size: 1.2rem;
+    }
+
+    .answer-button {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    #footer {
+        font-size: 1rem;
+    }
 }
