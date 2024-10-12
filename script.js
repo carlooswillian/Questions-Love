@@ -111,10 +111,7 @@ function showResult() {
 
 function showFinalModal() {
     finalModal.style.display = "flex";
-    document.getElementById("modal-content").innerHTML = `
-        <img src="imagem11.jpg" alt="Prêmio">
-        <button id="close-modal" onclick="closeModal()">Fechar</button>
-    `;
+    document.getElementById("prize-image").src = "imagem11.jpg";
 }
 
 function closeModal() {
