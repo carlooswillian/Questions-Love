@@ -137,8 +137,8 @@ function showResult() {
         finalImage.classList.remove('hidden');
 
         prizeButton.onclick = () => {
+            finalImage.style.display = 'flex'; // Muda para 'flex' para ocupar a tela toda
             finalImage.classList.remove('hidden');
-            finalImage.style.backgroundImage = "url(imagem11.jpg)"; // Substitua pelo nome real do arquivo
         };
     } else {
         resultMessage.textContent = "Tente novamente!";
