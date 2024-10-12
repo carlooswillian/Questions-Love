@@ -97,7 +97,7 @@ function loadQuestion() {
 // Função para selecionar uma resposta
 function selectAnswer(selectedAnswer) {
     const questionData = questions[currentQuestion];
-    
+
     // Marca o botão selecionado
     document.getElementById(`answer${selectedAnswer + 1}`).classList.add('selected');
 
@@ -108,6 +108,7 @@ function selectAnswer(selectedAnswer) {
     }
 
     updateFooter();
+    
     currentQuestion++;
     setTimeout(loadQuestion, 1000); // Delay para mostrar a seleção antes de carregar a próxima pergunta
 }
@@ -119,6 +120,9 @@ function updateFooter() {
 
 // Função para mostrar o resultado final
 function showResult() {
+    // Remove todos os elementos do corpo para mostrar o resultado
+    document.body.innerHTML = '';
+
     const resultContainer = document.createElement('div');
     resultContainer.id = 'result-container';
 
@@ -141,6 +145,7 @@ function showResult() {
 
 // Função para mostrar a imagem de prêmio
 function showPrize() {
+    // Remove todos os elementos do corpo para mostrar a imagem do prêmio
     document.body.innerHTML = `
         <div id="prize-container">
             <img src="imagem11.jpg" alt="Seu prêmio!" style="width: 100%; height: auto;">
@@ -164,16 +169,9 @@ function restartGame() {
         </div>
         <div id="footer"></div>
     `;
-
-    // Inicializa o rodapé com acertos e erros antes de carregar a primeira pergunta
-    updateFooter();
     
-    // Carrega a primeira pergunta ao iniciar
     loadQuestion();
 }
 
-// Inicializa o rodapé com acertos e erros antes de carregar a primeira pergunta
-updateFooter();
-
-// Carrega a primeira pergunta ao iniciar
+// Inicia o jogo
 loadQuestion();
