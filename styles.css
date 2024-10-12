@@ -8,20 +8,53 @@ body {
     background-size: cover;
     background-position: top center;
     height: 100vh;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
 }
 
 #quiz-container {
     text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #f4f4f4;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .answer-button {
-    display: block;
+    display: inline-block;
     margin: 10px;
-    padding: 10px;
-    font-size: 16px;
-    width: 200px;
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #008cba;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
 }
 
+.answer-button:hover {
+    background-color: #005f73;
+    transform: scale(1.05);
+}
+
+.answer-button:active {
+    background-color: #004f63;
+    transform: scale(0.98);
+}
+
+/* Footer for score */
 #footer {
     position: fixed;
     bottom: 10px;
@@ -33,6 +66,7 @@ body {
     text-align: center;
 }
 
+/* Result Container */
 #result-container {
     text-align: center;
 }
@@ -70,4 +104,50 @@ body {
     max-width: 500px;
     height: auto;
     border-radius: 10px;
+}
+
+/* Result Button */
+#result-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#result-button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+#result-button:active {
+    background-color: #1c7430;
+    transform: scale(0.98);
+}
+
+/* General button for modal */
+#close-modal {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#close-modal:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+#close-modal:active {
+    background-color: #bd2130;
+    transform: scale(0.98);
 }
