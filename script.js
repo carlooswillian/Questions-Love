@@ -63,7 +63,7 @@ function loadQuestion() {
     }
 
     const questionData = questions[currentQuestion];
-    
+
     // Atualiza o título e a pergunta
     document.getElementById('question-title').textContent = `Pergunta ${currentQuestion + 1}`;
     document.getElementById('question').textContent = questionData.question;
