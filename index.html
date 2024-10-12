@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo de Perguntas</title>
     <link rel="stylesheet" href="styles.css">
+    <title>Jogo de Perguntas</title>
 </head>
 <body>
     <div id="game-container">
@@ -14,6 +14,12 @@
         <button id="answer2" class="answer"></button>
     </div>
     <div id="footer"></div>
+    <div id="result-container" class="hidden">
+        <h1 id="result-message"></h1>
+        <button id="prize-button" class="hidden">Pegue o seu prêmio 🎁</button>
+        <button id="retry-button" class="hidden">Tente novamente</button>
+        <div id="final-image" class="hidden"></div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
