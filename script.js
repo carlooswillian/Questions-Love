@@ -39,8 +39,8 @@ const questions = [
         correctAnswer: 0
     },
     {
-        question: "Qual raiz quadrada de 16?",
-        options: ["4", "8"],
+        question: "Qual destino quero ir?",
+        options: ["Itália", "Japão"],
         correctAnswer: 0
     },
     {
@@ -49,8 +49,8 @@ const questions = [
         correctAnswer: 1
     },
     {
-        question: "Qual destino quero ir?",
-        options: ["Itália", "Japão"],
+        question: "Fica pra sempre comigo?",
+        options: ["SIM", "NÃO"],
         correctAnswer: 0
     }
 ];
