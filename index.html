@@ -1,26 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo de Perguntas</title>
     <link rel="stylesheet" href="styles.css">
+    <title>Jogo de Perguntas</title>
 </head>
 <body>
     <div id="game-container">
-        <h1 id="question-title">Pergunta 1</h1>
-        <div id="question-container">
-            <p id="question">Qual é a data do nosso primeiro beijo?</p>
-            <button class="answer" id="answer1"></button>
-            <button class="answer" id="answer2"></button>
-        </div>
+        <h1 id="question-title"></h1>
+        <p id="question"></p>
+        <button id="answer1" class="answer"></button>
+        <button id="answer2" class="answer"></button>
     </div>
-
-    <div id="footer">
-        <p>Acertos: <span id="correct-count">0</span></p>
-        <p>Erros: <span id="wrong-count">0</span></p>
-    </div>
-
+    <div id="footer"></div>
     <script src="script.js"></script>
 </body>
 </html>
