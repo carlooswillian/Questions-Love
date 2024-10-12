@@ -69,7 +69,7 @@ const questions = [
 // Função para carregar a pergunta
 function loadQuestion() {
     if (currentQuestion >= questions.length) {
-        showResult(); // Mostra o resultado quando as perguntas acabam
+        showResult(); // Mostra a tela de resultado
         return;
     }
 
@@ -112,15 +112,11 @@ function selectAnswer(selectedAnswer) {
     setTimeout(loadQuestion, 1000); // Delay para mostrar a seleção antes de carregar a próxima pergunta
 }
 
-// Função para atualizar o contador de acertos e erros
-function updateFooter() {
-    document.getElementById('footer').textContent = `Acertos: ${correctAnswers} | Erros: ${wrongAnswers}`;
-}
-
-// Função para mostrar o resultado final
+// Função para mostrar o resultado
 function showResult() {
-    document.getElementById('game-container').style.display = 'none'; // Oculta o jogo
-    const resultContainer = document.getElementById('result-container');
-    resultContainer.style.display = 'block'; // Mostra o container de resultado
+    document.getElementById('game-container').style.display = 'none'; // Esconde o container do jogo
+    document.getElementById('result-container').style.display = 'block'; // Mostra o container de resultado
 
-    // Verifica se o número de acertos é suficiente
+    const resultTitle = document.getElementById('result-title');
+    const resultMessage = document.getElementById('result-message');
+    const
