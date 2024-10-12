@@ -1,30 +1,30 @@
-/* Estilo global */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
     margin: 0;
     padding: 0;
-    color: white;
-    text-align: center;
-    background-color: #000;
-    background-position: center;
     background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh;
+    background-position: center;
 }
 
-/* Container do jogo com fundo semi-transparente para melhorar a legibilidade */
 #game-container {
-    padding: 30px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    max-width: 90%;
-    margin: auto;
-    margin-top: 10vh;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-/* Botões de resposta */
-button.answer {
+h1 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+.answer {
     padding: 10px 20px;
     margin: 10px;
     background-color: #007bff;
@@ -32,16 +32,24 @@ button.answer {
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    font-size: 16px;
-    width: 100%;
-    max-width: 300px;
+    font-size: 1.2rem;
 }
 
-button.answer:hover {
+.answer.selected {
     background-color: #0056b3;
 }
 
-/* Adicionando estilos para a mensagem final */
+#footer {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+}
+
 #result-container {
     display: none;
     flex-direction: column;
@@ -61,7 +69,7 @@ button.answer:hover {
 
 #result-container img {
     width: 100%;
-    max-width: 400px; /* Para manter uma boa visibilidade em dispositivos menores */
+    max-width: 400px;
 }
 
 #result-container button {
@@ -78,42 +86,4 @@ button.answer:hover {
 
 #result-container button:hover {
     background-color: #0056b3;
-}
-
-/* Rodapé fixo para contador de acertos e erros */
-#footer {
-    position: fixed;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    font-size: 16px;
-    padding: 15px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-}
-
-/* Destaque para a resposta selecionada */
-button.answer.selected {
-    background-color: #0056b3; /* Cor diferente para o botão selecionado */
-    border: 2px solid #fff; /* Borda branca para destacar */
-}
-
-/* Estilos para telas menores, como celulares */
-@media (max-width: 600px) {
-    #game-container {
-        padding: 20px;
-        margin-top: 5vh;
-    }
-
-    button.answer {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    #footer {
-        font-size: 14px;
-    }
 }
