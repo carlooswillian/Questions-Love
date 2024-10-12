@@ -66,9 +66,16 @@ function loadQuestion() {
     document.getElementById('question-title').textContent = `Pergunta ${currentQuestion + 1}`;
     document.getElementById('question').textContent = questionData.question;
 
-    const buttons = document.querySelectorAll('.answer');
-    buttons[0].textContent = questionData.answers[0];
-    buttons[1].textContent = questionData.answers[1];
+    const answer1Button = document.getElementById('answer1');
+    const answer2Button = document.getElementById('answer2');
+
+    // Atualiza o texto dos botões
+    answer1Button.textContent = questionData.answers[0];
+    answer2Button.textContent = questionData.answers[1];
+
+    // Define os eventos de clique para os botões de resposta
+    answer1Button.onclick = () => checkAnswer(0);
+    answer2Button.onclick = () => checkAnswer(1);
 }
 
 function checkAnswer(selectedAnswerIndex) {
