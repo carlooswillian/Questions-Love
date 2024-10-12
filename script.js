@@ -1,163 +1,148 @@
-let currentQuestion = 0;
-let correctAnswers = 0;
-let wrongAnswers = 0;
-
-// Array de perguntas
 const questions = [
     {
         question: "Qual é a data do nosso primeiro beijo?",
-        answers: ["29/09/2022", "26/09/2022"],
-        correctAnswer: 0,
-        image: "imagem1.jpg" // Substitua pelo nome real do arquivo
+        answers: [
+            { text: "29/09/2022", correct: true },
+            { text: "26/09/2022", correct: false }
+        ]
     },
     {
         question: "Qual meu fast food favorito?",
-        answers: ["Hambúrguer", "Pizza"],
-        correctAnswer: 1,
-        image: "imagem2.jpg" // Substitua pelo nome real do arquivo
+        answers: [
+            { text: "Hambúrguer", correct: false },
+            { text: "Pizza", correct: true }
+        ]
     },
     {
         question: "Qual minha cor favorita?",
-        answers: ["Verde", "Azul"],
-        correctAnswer: 1,
-        image: "imagem3.jpg" // Substitua pelo nome real do arquivo
+        answers: [
+            { text: "Verde", correct: false },
+            { text: "Azul", correct: true }
+        ]
     },
     {
         question: "Qual meu esporte favorito?",
-        answers: ["Futebol", "Musculação"],
-        correctAnswer: 0,
-        image: "imagem4.jpg" // Substitua pelo nome real do arquivo
+        answers: [
+            { text: "Futebol", correct: true },
+            { text: "Musculação", correct: false }
+        ]
     },
     {
         question: "Pra onde foi nossa primeira viagem?",
-        answers: ["Búzios", "Rio de Janeiro"],
-        correctAnswer: 0,
-        image: "imagem5.jpg" // Substitua pelo nome real do arquivo
+        answers: [
+            { text: "Búzios", correct: true },
+            { text: "Rio de Janeiro", correct: false }
+        ]
     },
     {
         question: "Quantas cidades já conhecemos juntos?",
-        answers: ["10", "8"],
-        correctAnswer: 0,
-        image: "imagem6.jpg" // Substitua pelo nome real do arquivo
+        answers: [
+            { text: "10", correct: true },
+            { text: "8", correct: false }
+        ]
     },
     {
         question: "Onde eu gosto de carinho?",
-        answers: ["Cabelo", "Orelha"],
-        correctAnswer: 0,
-        image: "imagem7.jpg" // Substitua pelo nome real do arquivo
+        answers: [
+            { text: "Cabelo", correct: true },
+            { text: "Orelha", correct: false }
+        ]
     },
     {
         question: "Qual raiz quadrada de 16?",
-        answers: ["4", "8"],
-        correctAnswer: 0,
-        image: "imagem8.jpg" // Substitua pelo nome real do arquivo
+        answers: [
+            { text: "4", correct: true },
+            { text: "8", correct: false }
+        ]
     },
     {
         question: "O que eu acho mais bonito em você?",
-        answers: ["Olhos", "Sorriso"],
-        correctAnswer: 1,
-        image: "imagem9.jpg" // Substitua pelo nome real do arquivo
+        answers: [
+            { text: "Olhos", correct: false },
+            { text: "Sorriso", correct: true }
+        ]
     },
     {
         question: "Qual destino quero ir?",
-        answers: ["Itália", "Japão"],
-        correctAnswer: 0,
-        image: "imagem10.jpg" // Substitua pelo nome real do arquivo
+        answers: [
+            { text: "Itália", correct: true },
+            { text: "Japão", correct: false }
+        ]
     }
 ];
 
-// Função para carregar a pergunta
-function loadQuestion() {
-    if (currentQuestion >= questions.length) {
-        showResult();
-        return;
-    }
+let currentQuestionIndex = 0;
+let correctCount = 0;
+let wrongCount = 0;
 
-    const questionData = questions[currentQuestion];
+const questionElement = document.getElementById('question');
+const answerButtons = document.querySelectorAll('.answer-button');
+const correctCountElement = document.getElementById('correct-count');
+const wrongCountElement = document.getElementById('wrong-count');
+const resultContainer = document.getElementById('result-container');
+const resultMessage = document.getElementById('result-message');
+const resultButton = document.getElementById('result-button');
+const finalImage = document.getElementById('final-image');
 
-    // Atualiza a pergunta e respostas
-    document.getElementById('question-title').textContent = `Pergunta ${currentQuestion + 1}`;
-    document.getElementById('question').textContent = questionData.question;
-    document.getElementById('answer1').textContent = questionData.answers[0];
-    document.getElementById('answer2').textContent = questionData.answers[1];
+// Inicia o jogo
+function startGame() {
+    currentQuestionIndex = 0;
+    correctCount = 0;
+    wrongCount = 0;
+    resultContainer.classList.add('hidden');
+    showQuestion(questions[currentQuestionIndex]);
+}
 
-    // Limpa a seleção anterior
-    document.querySelectorAll('.answer').forEach(button => {
-        button.classList.remove('selected'); // Remove a classe 'selected' de todos os botões
+// Exibe a pergunta atual
+function showQuestion(question) {
+    questionElement.innerText = question.question;
+    answerButtons.forEach((button, index) => {
+        button.innerText = question.answers[index].text;
+        button.onclick = () => selectAnswer(question.answers[index]);
     });
-
-    // Atribui os eventos de clique para as alternativas
-    document.getElementById('answer1').onclick = () => selectAnswer(0);
-    document.getElementById('answer2').onclick = () => selectAnswer(1);
-
-    // Define a imagem de fundo
-    document.body.style.backgroundImage = `url(${questionData.image})`;
 }
 
-// Função para selecionar uma resposta
-function selectAnswer(selectedAnswer) {
-    const questionData = questions[currentQuestion];
-
-    // Marca o botão selecionado
-    document.getElementById(`answer${selectedAnswer + 1}`).classList.add('selected');
-
-    if (selectedAnswer === questionData.correctAnswer) {
-        correctAnswers++;
+// Seleciona a resposta
+function selectAnswer(answer) {
+    if (answer.correct) {
+        correctCount++;
     } else {
-        wrongAnswers++;
+        wrongCount++;
     }
+    correctCountElement.innerText = correctCount;
+    wrongCountElement.innerText = wrongCount;
 
-    updateFooter();
-    currentQuestion++;
-    setTimeout(loadQuestion, 1000); // Delay para mostrar a seleção antes de carregar a próxima pergunta
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        showQuestion(questions[currentQuestionIndex]);
+    } else {
+        showResult();
+    }
 }
 
-// Função para atualizar o contador de acertos e erros
-function updateFooter() {
-    document.getElementById('footer').textContent = `Acertos: ${correctAnswers} | Erros: ${wrongAnswers}`;
-}
-
-// Função para mostrar o resultado final
+// Exibe o resultado
 function showResult() {
-    // Esconde o container de perguntas
-    document.getElementById('game-container').classList.add('hidden');
+    questionElement.classList.add('hidden');
+    answerButtons.forEach(button => button.classList.add('hidden'));
+    resultContainer.classList.remove('hidden');
 
-    // Mostra o container de resultados
-    document.getElementById('result-container').classList.remove('hidden');
-
-    const resultMessage = document.getElementById('result-message');
-    const prizeButton = document.getElementById('prize-button');
-    const retryButton = document.getElementById('retry-button');
-    const finalImage = document.getElementById('final-image');
-
-    if (correctAnswers >= 7) {
-        resultMessage.textContent = "Parabéns, você venceu!";
-        prizeButton.classList.remove('hidden');
-        finalImage.style.backgroundImage = "url(imagem11.jpg)"; // Substitua pelo nome real do arquivo
-        finalImage.classList.remove('hidden');
-
-        prizeButton.onclick = () => {
-            finalImage.style.display = 'flex'; // Muda para 'flex' para ocupar a tela toda
-            finalImage.classList.remove('hidden');
-        };
+    if (correctCount >= 7) {
+        resultMessage.innerText = "Parabéns, você venceu!";
+        resultButton.innerText = "Pegue o seu prêmio 🎁";
+        resultButton.onclick = showFinalImage;
     } else {
-        resultMessage.textContent = "Tente novamente!";
-        retryButton.classList.remove('hidden');
-
-        retryButton.onclick = () => {
-            currentQuestion = 0;
-            correctAnswers = 0;
-            wrongAnswers = 0;
-            updateFooter();
-            document.getElementById('result-container').classList.add('hidden');
-            document.getElementById('game-container').classList.remove('hidden');
-            loadQuestion();
-        };
+        resultMessage.innerText = "Tente novamente!";
+        resultButton.innerText = "Recomeçar";
+        resultButton.onclick = startGame;
     }
 }
 
-// Inicializa o rodapé com acertos e erros antes de carregar a primeira pergunta
-updateFooter();
+// Mostra a imagem final
+function showFinalImage() {
+    finalImage.style.display = 'block'; // Exibe a imagem
+    finalImage.style.backgroundImage = "url('imagem11.jpg')"; // Define a imagem de fundo
+    finalImage.classList.remove('hidden'); // Remove a classe hidden
+}
 
-// Carrega a primeira pergunta ao iniciar
-loadQuestion();
+// Inicia o jogo ao carregar a página
+startGame();
