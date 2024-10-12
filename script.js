@@ -144,6 +144,7 @@ function showFinalImage() {
     finalImage.style.display = 'block'; // Exibe a imagem
     finalImage.style.backgroundImage = "url('imagem11.jpg')"; // Define a imagem de fundo
     finalImage.classList.remove('hidden'); // Remove a classe hidden
+    resultButton.style.zIndex = '-1'; // Envia o botão para trás da imagem
 }
 
 // Inicia o jogo ao carregar a página
